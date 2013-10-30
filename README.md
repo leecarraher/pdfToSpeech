@@ -8,17 +8,23 @@ alot better (sorry floss!).
 
 Prerequisites:
 =============
-Webserver
+Webserver 
+
 cgi-bin
+
 darwin with "say" command
 
 
 HowTo:
 ======
 go to your web visible root directory
+
 git clone https://github.com/leecarraher/pdfToSpeech.git
+
 cd cgi-bin/
+
 chmod a+x pdftotext
+
 chmod a+x upload.py
 
 thats it!
@@ -26,6 +32,7 @@ thats it!
 
 License:
 ========
+
 None! There may be some grey area with using mac os speech in this way. I know
 festival speech engines have different rules regarding these things, but since
 i am not distributing the speech engine, and it is accessed through web service
