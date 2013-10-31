@@ -36,4 +36,4 @@ License:
 None! There may be some grey area with using mac os speech in this way. I know
 festival speech engines have different rules regarding these things, but since
 i am not distributing the speech engine, and it is accessed through web service
-calls, hosting it should be fine, but you didn't here it from me.
+calls, hosting it should be fine, but you didn't hear it from me.
