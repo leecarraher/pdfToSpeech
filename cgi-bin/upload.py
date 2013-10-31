@@ -15,6 +15,14 @@ f.write(str(id))
 f.close()
 form = cgi.FieldStorage()
 filedata = form["upload"]
+voice = form.getvalue("voice")
+rate = 200
+try:
+    rate = int(form.getvalue("rate"))
+except ValueError:
+    rate = 200
+    print "<p/>Please Specify an integer for WPM<p/>"
+
 if filedata.file:
 	#print "<br/>conv"+str(id)+".pdf"
 	with file("conv"+str(id)+".pdf","w") as outfile:
@@ -27,8 +35,9 @@ if filedata.file:
 	print os.system("iconv -f utf8 -t utf8 -c conv"+str(id)+".txt > convx"+str(id)+".txt")
 	#print "<br/>rm conv"+str(id)+".txt"
 	print os.system("rm conv"+str(id)+".txt")
-	#print "<br/>say -o output"+str(id)+".m4a -f convx"+str(id)+".txt -v alex"
-	print os.system("say -o output"+str(id)+".m4a -f convx"+str(id)+".txt -v alex")
+	print "<br/>say -o output"+str(id)+".m4a -f convx"+str(id)+".txt -v" + str(voice) + " -r "+str(rate)
+	print os.system("say -o output"+str(id)+".m4a -f convx"+str(id)+".txt -v "+str(voice) + " -r "+str(rate))
+
 	#print "<br/>mv output"+str(id)+".m4a ../"
 	print os.system("mv output"+str(id)+".m4a ../")
 	#print "<br/>rm convx"+str(id)+".txt"
@@ -39,6 +48,7 @@ if filedata.file:
 	f = open("filesconverted",'r')
 	cn = int(f.readline())+1
 	print "<p/>"+str(cn)+" Files Converted!"
+	print "<br/> <a href=\"https://github.com/leecarraher/pdfToSpeech\">Fork It!</a>"
 	f.close()
 	outfile.close()
 	f = open("filesconverted",'w')
